@@ -1,90 +1,55 @@
 # RaySTTOK
 
-# Project Title
+RaySTTOK is essentially a Python class which allows easy ray-tracing simulations within the environment of ISTTOK's tomography system. It implements several possible radiation sources and allows the simulation of their corresponding detector measurements.
+RaySTTOK also allows the computation of ISTTOK's projection matrix, taking into account the detector's complex viewing geometries and reflections. This matrix can mimic the results of the ray-tracing simulation at a fraction of the computational cost.
 
-One Paragraph of project description goes here
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+RaySTTOK uses the heavy machinery implemented on the Raysetc Python package. Thus, the main prerequisite is:
 
 ```
-Give examples
+Raysect
+```
+Other required packages include:
+```
+Numpy
+Matplotlib
+Scipy
+Random
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+The first step to successfuly use RaySTTOK is the installation of the package [Raysect](https://raysect.github.io/documentation/installation.html).
+Then, simply place the file "raysttok.py" and the folder "resources" on the desired working directory.
 
-Say what the step will be
+## Getting Started
 
+The simulation of a synthetic Gaussian emissivity profile can be done with:
 ```
-Give the example
-```
+raysttok = RaySTTOK(reflections=True, pixel_samples=100)
 
-And repeat
+raysttok.place_plasma(shape='gaussian', emissiv_gain=1e3, mean=[0.05, -0.05], cov=[[5e-4, 0], [0, 5e-4]])
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+raysttok.simulate_rays()
+raysttok.plot_detectors()
+raysttok.show_plots()
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
+On the other hand, the computation of ISTTOK's projection matrix can be performed with:
 ```
-Give an example
+raysttok = RaySTTOK(reflections=True, pixel_samples=10)
+raysttok.get_proj_matrix(pixel_side=15, out_file="proj_matrix1")
+raysttok.plot_line_matrix(line=0, mat_file="proj_matrix1.npy")
+raysttok.show_plots()
 ```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+A careful description of the implemented methods and their potential can be found on [RaySSTOK Wiki](https://github.com/RVACardoso/RaySTTOK/wiki/RaySTTOK-Wiki)
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **R. V. A. Cardoso**
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
