@@ -3,7 +3,7 @@
 RaySTTOK is essentially a Python class which allows easy ray-tracing simulations within the environment of ISTTOK's tomography system. It implements several possible radiation sources and allows the simulation of their corresponding detector measurements.
 RaySTTOK also allows the computation of ISTTOK's projection matrix, taking into account the detector's complex viewing geometries and reflections. This matrix can mimic the results of the ray-tracing simulation at a fraction of the computational cost.
 
-
+![view cone image](figures/capa.png?raw=true "Title")
 
 ### Prerequisites
 
