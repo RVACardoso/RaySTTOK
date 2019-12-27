@@ -16,7 +16,7 @@ raysttok.show_plots()
 
 
 ####################################################################################################################
-# Computation of projection matrix through tay-tracing simulation of individual pixels
+# Computation of projection matrix through tay-tracing simulation of individual pixels 
 
 raysttok = RaySTTOK(reflections=True, pixel_samples=10)
 raysttok.get_proj_matrix(pixel_side=15, out_file="proj_matrix1")
